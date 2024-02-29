@@ -9,7 +9,6 @@ namespace Circustrein_algoritme
 {
     internal class Train
     {
-        const int ONE = 1;
         List<Cart> carts;
         public Train()
         {
@@ -18,6 +17,8 @@ namespace Circustrein_algoritme
 
         public void AddToCart(Animals animal)
         {
+            bool added = false;
+
             foreach (Cart c in carts)
             {
                 if (c.TryAddAnimal(animal))
@@ -26,21 +27,18 @@ namespace Circustrein_algoritme
                 }
             }
 
-            if (carts.Count == 0)
+            if (!added)
             {
                 carts.Add(new Cart());
-            }
-            bool result = carts[carts.Count - ONE].TryAddAnimal(animal);
-            if (!result) 
-            {
-                carts.Add(new Cart());
-                carts[carts.Count - ONE].TryAddAnimal(animal);
+                carts[carts.Count - 1].TryAddAnimal(animal);
             }
         }
 
         public void printTrain()
         {
             int CartCount = 1;
+
+            Console.WriteLine("------------------------------------");
             Console.WriteLine("Train");
 
             foreach (Cart c in carts)
@@ -49,6 +47,7 @@ namespace Circustrein_algoritme
                 c.PrintAnimals();
                 CartCount++;
             }
+            Console.WriteLine("------------------------------------");
         }
     }
 }

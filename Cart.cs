@@ -20,23 +20,34 @@ namespace Circustrein_algoritme
 
         public bool TryAddAnimal(Animals animal)
         {
-            if (currentCapacity + Convert.ToInt32(animal.size) > CARTSIZE)
+            if (currentCapacity + Convert.ToInt32(animal.Size) > CARTSIZE || AnimalsWillEatMe(animal))
             {
                 return false;
             } else
             {
                 animals.Add(animal);
-                currentCapacity += Convert.ToInt32(animal.size);
+                currentCapacity += Convert.ToInt32(animal.Size);
                 return true;
             }
-            
+        }
+
+        private bool AnimalsWillEatMe(Animals animal)
+        {
+            foreach (Animals anim in animals)
+            {
+                if (anim.Carnivore && anim.Size >= animal.Size)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void PrintAnimals() 
         {
             foreach (Animals animal in animals)
             {
-                Console.WriteLine(animal.size.ToString() + " " + animal.carnivore.ToString());
+                Console.WriteLine(animal.Size.ToString() + " " + animal.Carnivore.ToString());
             }
         }
     }
