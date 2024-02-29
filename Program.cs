@@ -37,7 +37,7 @@ class Main
     {
         foreach (Animals animal in animals)
         {
-            Console.WriteLine(animal.size.ToString() + " " + animal.carnivore.ToString());
+            Console.WriteLine(animal.Size.ToString() + " " + animal.Carnivore.ToString());
         }
     }
 
@@ -65,7 +65,5 @@ class Main
         Console.WriteLine("Small:");
         count = Convert.ToInt32(Console.ReadLine());
         AddAnimals(1, false, count);
-        }
-
-
+     }
  }
