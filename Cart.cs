@@ -12,6 +12,7 @@ namespace Circustrein_algoritme
         int currentCapacity = 0;
 
         List<Animals> animals;
+        Main m;
 
         public Cart()
         {
@@ -43,11 +44,13 @@ namespace Circustrein_algoritme
             return false;
         }
 
-        public void PrintAnimals() 
+        public void PrintAnimals(Main main) 
         {
+            m = main;
+
             foreach (Animals animal in animals)
             {
-                Console.WriteLine(animal.Size.ToString() + " " + animal.Carnivore.ToString());
+                m.Print(animal.Size.ToString() + " " + animal.Carnivore.ToString());
             }
         }
     }
