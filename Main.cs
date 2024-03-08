@@ -6,10 +6,11 @@ Main main = new Main();
 class Main 
 {
     List<Animals> animals;
-    Train train = new Train();
+    Train train;
     public Main() 
-    { 
-        animals = new List<Animals>();
+    {
+		train = new Train(this);
+		animals = new List<Animals>();
 
         GetAnimals();
         PrintAnimals();
@@ -66,4 +67,9 @@ class Main
         count = Convert.ToInt32(Console.ReadLine());
         AddAnimals(1, false, count);
      }
+
+    public void Print(string String)
+    {
+        Console.WriteLine(String);
+    }
  }
