@@ -9,9 +9,11 @@ namespace Circustrein_algoritme
 {
     internal class Train
     {
+        Main m;
         List<Cart> carts;
-        public Train()
+        public Train(Main main)
         {
+            m = main;
             carts = new List<Cart>();
         }
 
@@ -37,17 +39,16 @@ namespace Circustrein_algoritme
         public void printTrain()
         {
             int CartCount = 1;
-
-            Console.WriteLine("------------------------------------");
-            Console.WriteLine("Train");
+            m.Print("------------------------------------");
+            m.Print("Train");
 
             foreach (Cart c in carts)
             {
-                Console.WriteLine("cart: " + CartCount);
-                c.PrintAnimals();
+                m.Print("cart: " + CartCount);
+                c.PrintAnimals(m);
                 CartCount++;
             }
-            Console.WriteLine("------------------------------------");
+            m.Print("------------------------------------");
         }
     }
 }
